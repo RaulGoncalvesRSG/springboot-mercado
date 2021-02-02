@@ -1,0 +1,35 @@
+https://github.com/tadeuespindolapalermo/spring-web-mvc
+
+-Cadastro de Pessoas
+-Carregar imagem quando editar
+
+-Cadastro de Produtos
+Maskara do preço.
+
+-Produtos
+-Tabela de produtos de acordo com a categoria.
+-Clicar na imagem e abrir
+-Tipo de Ordenação: nome, preço, quantidade.
+-Opção de remover a imagem ao editar um produto
+
+Problemas--------------------------------------------------------------------------------
+-Problema na tabela
+Quando faz pesquisa por sexo e retorna mais de uma pag, ao mudar de pag, a pesquisa se perde e aparece todos os usuários em vez de mostrar apenas os que foram pesquisados.
+Método: carregarPessoasPorPaginacao.
+
+-Atualizar o cadastro de pessoas com o combo para não aparecer diretamente em uma opção - https://materializecss.com/select.html
+
+-Problema ao gerar PDF por pesquisa - está imprimindo de acordo com o que está no campo de pesquisa e não com a lista.
+
+-Jasper: linha muito distante.
+
+Adicionais-------------------------------------------------------------------------------
+
+-Ajax ao excluir objetos
+
+-Mostrar horário de entrada e saída do usuário
+
+-Barra de Menu de opções igual o thymeleaf
+
+-Menu principal: Tela de cadastro de funcionários
+-Cadastrar profissões para usuários e categorias para produtos

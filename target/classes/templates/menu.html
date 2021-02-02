@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Menu Principal</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Adicionando JQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<body>
+	<h3 style="text-align: center">Spring Boot + Thymeleaf + Material Design Lite</h3><br/>
+
+		<div style="text-align: center;">
+			<h2>Bem vindo ao sistema!</h2>
+	
+			<table>
+				<tr>
+					<td>
+						<a href="/spring-boot-thymeleaf/cadastroPessoa.html">
+						<img th:src="@{/img/pessoa.png}" width="150x" height="150x" alt="Pessoas" title="Pessoas"/></a>
+					</td>
+				
+					<td>
+						<a href="/spring-boot-thymeleaf/produto.html">
+						<img th:src="@{/img/produto.png}" width="150x" height="150x" alt="Produto" title="Produto"/></a>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Cadastro de usuários</td>
+					<td>Cadastro de produtos</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Produtos</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Adicionando JQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+ <style type="text/css">
+table.striped > tbody > tr:nth-child(odd) {
+    background-color: rgba(242, 242, 242, 0.5);
+}
+
+table.striped>tbody>tr>td {
+    text-align: center;
+}
+
+form input[type=submit]{
+	color: white;
+}
+
+table {
+	width: 98%;
+	margin-left: 1%
+}
+
+table td, table th{
+	border: 1px solid grey;
+}
+
+table th {
+	background: #eee;
+	text-align: center;
+}
+
+</style>
+
+
+</head>
+<body>
+
+	<form style="text-align: center; margin-top: 3%">
+		<a href="/spring-boot-thymeleaf/menu">
+			<img th:src="@{/img/home.png}" width="50x" height="50px" alt="Menu" title="Menu"/>
+		</a>
+		
+		<a href="/spring-boot-thymeleaf/cadastroProduto">
+			<img th:src="@{/img/produto.png}" width="50x" height="50px" alt="Pessoas" title="Pessoas"/>
+		</a>
+			
+		<a href="/spring-boot-thymeleaf/logout">
+			<img th:src="@{/img/sair.jpg}" width="50x" height="50px" alt="Sair" title="Sair"/>
+		</a>
+	</form>
+
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Imagem</th>
+				<th>Valor</th>
+				<th>Quantidade</th>
+				<th>Categoria</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		
+		<!-- .content  -->
+		<tr th:each="produto : ${produtos}">
+			<td th:text="${produto.id}"></td>
+		
+			<td th:text="${produto.nome}"></td>
+			
+			<td>
+				<a th:if="${produto.imagem} != null">
+				<img th:src="${produto.fotoTemp}" width="90px" height="70px" alt="Produto" title="Produto"/></a>
+			
+				<a th:if="${produto.imagem} == null">
+				<img th:src="@{/img/carrinho.png}" width="90px" height="70px" alt="Produto" title="Produto"/></a>
+			</td>
+			
+			<td th:text="${produto.preco}"></td>
+			
+			<td th:text="${produto.quantidade}"></td>
+			
+			<td th:text="${produto.categoria.nome}"></td>
+			
+			<td>
+				<a th:href="@{/editarProduto/{idProduto}(idProduto = ${produto.id})}">
+				<img th:src="@{/img/editar.png}" width="25x" height="25px" alt="Editar" title="Editar"/></a>
+			</td>
+			
+			<td>
+				<a th:href="@{/removerProduto/{idProduto}(idProduto = ${produto.id})}">
+				<img th:src="@{/img/excluir.png}" width="25x" height="25px" alt="Excluir" title="Excluir"/></a>
+			</td>
+		</tr>
+	</table>
+
+	<div class="row" style="margin-top: 30px; text-align: center;">
+		
+		<span th:if="${produtos.hasPrevious()}">
+			<a style="color: black;" th:href="@{/produtosPaginacao(page=${produtos.number-1}, size=${produtos.size}, 
+				nomePesquisa=${nomePesquisa})}">Anterior</a>
+		</span>
+		
+		<th:block th:each="i: ${#numbers.sequence(0, produtos.totalPages - 1)}">
+			<a style="color: black;" th:href="@{/produtosPaginacao(page=${i}, size=${produtos.size}, 
+				nomePesquisa=${nomePesquisa})}">[[ ${i} + 1 ]]</a>
+		</th:block>
+		
+		<span th:if="${produtos.hasNext()}">
+			<a style="color: black;" th:href="@{/produtosPaginacao(page=${produtos.number+1}, size=${produtos.size}, 
+				nomePesquisa=${nomePesquisa})}">Próximo</a>
+		</span>
+	
+	</div>
+
+</body>
+</html>

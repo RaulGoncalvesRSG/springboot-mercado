@@ -1,0 +1,14 @@
+<td><input type="text" id="preco" name="preco" maxlength="11"
+							data-thousands="." data-decimal="," data-precision="2"
+							value="${produto.valorEmTexto}" placeholder="Preço maior que 0"></td>
+
+
+Model - Produto
+public String getValorEmTexto(){
+return Double.toString(valor).replace('.',',');
+}
+
+
+<!-- Maskara -->
+<script src="https://raw.githubusercontent.com/plentz/jquery-maskmoney/master/dist/jquery.maskMoney.min.js" 
+type="text/javascript"></script>
